@@ -2,10 +2,10 @@
 :root {
     --FG: #f0e9ef;
     --BG: #211f25;
-    --BORDER: #b34f61;
-    --LINK: #8eb3ff;
+    --BORDER: #52657b;
+    --LINK: #83b7f0;
     --WL: 1px;
-    --PAGE_WIDTH: 800px;
+    --PAGE_WIDTH: 960px;
 
     --BIG: 4rem;
     --MED: 2rem;
@@ -15,10 +15,10 @@
 }
 
 html {
-    background: pink;
+    background: var(--BG);
 }
 
-html.rowing-site {
+html.site-theme {
     background: var(--BG);
 }
 
@@ -46,6 +46,7 @@ header {
 
 header h1 {
     font-size: 42px;
+    color: var(--LINK);
     border: 0;
     margin-top: 0;
     margin-bottom: var(--SML);
@@ -77,6 +78,7 @@ footer {
 
 h2 {
     margin-top: 35px;
+    color: var(--LINK);
 }
 
 a {
@@ -105,61 +107,85 @@ img {
     height: auto;
 }
 
-.rowing-page {
-    --ROWING_BLUE: #83b7f0;
-    --ROWING_PALE_BLUE: #292d36;
-    --ROWING_BORDER: #52657b;
+.site-page {
+    --ACCENT_BLUE: #83b7f0;
+    --PANEL_BG: #292d36;
+    --PANEL_BORDER: #52657b;
 
-    max-width: 960px;
+    max-width: var(--PAGE_WIDTH);
     background: var(--BG);
-    border-color: var(--ROWING_BORDER);
+    border-color: var(--PANEL_BORDER);
 }
 
-.rowing-page header,
-.rowing-page main,
-.rowing-page footer {
-    border-color: var(--ROWING_BORDER);
+.site-page header,
+.site-page main,
+.site-page footer {
+    border-color: var(--PANEL_BORDER);
 }
 
-.rowing-page header h1 {
-    color: var(--ROWING_BLUE);
+.site-page header h1 {
+    color: var(--ACCENT_BLUE);
     border-color: transparent;
     text-align: center;
 }
 
-.rowing-page nav {
-    border-color: var(--ROWING_BORDER);
+.site-page nav {
+    border-color: var(--PANEL_BORDER);
 }
 
-.rowing-page nav a,
-.rowing-page a {
-    color: var(--ROWING_BLUE);
+.site-page nav a,
+.site-page a {
+    color: var(--ACCENT_BLUE);
 }
 
-.rowing-page nav a {
+.site-page nav a:not(.back-home-link) {
     border: 0;
 }
 
-.rowing-page main {
+.site-page main {
     padding-top: var(--SML);
 }
 
-.rowing-page h2 {
-    color: var(--ROWING_BLUE);
+.site-page h2,
+.site-page h3 {
+    color: var(--ACCENT_BLUE);
+}
+
+.site-page h2 {
     margin-top: 0;
 }
 
-.rowing-intro,
-.rowing-event {
+.site-page main > section {
     margin-bottom: var(--MED);
     padding: var(--MED);
-    background: var(--ROWING_PALE_BLUE);
-    border-left: 4px solid var(--ROWING_BLUE);
+    background: var(--PANEL_BG);
+    border-left: 4px solid var(--ACCENT_BLUE);
 }
 
-.rowing-intro p:last-child,
-.rowing-event p:last-child {
+.site-page .playlist-card {
+    margin-bottom: var(--MED);
+    padding: var(--MED);
+    background: var(--PANEL_BG);
+    border-left: 4px solid var(--ACCENT_BLUE);
+}
+
+.site-page main > .playlist-grid {
+    padding: 0;
+    background: transparent;
+    border-left: 0;
+}
+
+.site-page main > section p:last-child,
+.site-page .intro-card p:last-child,
+.site-page .ocu-panel p:last-child,
+.site-page .playlist-card p:last-child {
     margin-bottom: 0;
+}
+
+.site-page .playlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--SML);
 }
 
 .rowing-photo {
@@ -173,7 +199,7 @@ img {
 }
 
 .rowing-event h3 {
-    color: var(--ROWING_BLUE);
+    color: var(--ACCENT_BLUE);
     font-size: 1.35rem;
     margin-top: var(--MED);
 }
@@ -185,7 +211,7 @@ img {
     list-style: none;
     margin: 0;
     padding: var(--SML);
-    border: 1px solid var(--ROWING_BORDER);
+    border: 1px solid var(--PANEL_BORDER);
     border-radius: var(--QRT);
 }
 
@@ -194,7 +220,7 @@ img {
     height: 100%;
     box-sizing: border-box;
     padding: var(--SML);
-    background: var(--BG);
+    background: var(--PANEL_BG);
     font-weight: bold;
     text-align: center;
 }
@@ -219,22 +245,26 @@ img {
 }
 
 .rowing-links a:hover {
-    background: var(--ROWING_PALE_BLUE);
+    background: var(--PANEL_BG);
 }
 
 @media (max-width: 600px) {
-    .rowing-page {
+    .site-page {
         margin: 0;
         padding: var(--QRT);
         border: 0;
     }
 
-    .rowing-page main {
+    .site-page main {
         padding: var(--SML);
     }
 
-    .rowing-intro,
-    .rowing-event {
+    .site-page main > section,
+    .site-page .playlist-card {
         padding: var(--SML);
+    }
+
+    .external-links {
+        transform: none;
     }
 }
